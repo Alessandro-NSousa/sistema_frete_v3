@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220412043349",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "caminhao",
+  "fields": [
+    {
+      "fieldName": "placa",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ano",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "marca",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "carga",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Caminhao",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

@@ -1,0 +1,61 @@
+{
+  "applications": "*",
+  "changelogDate": "20220412043355",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "frete",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dias",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "parcelamento",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Frete",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "cidade",
+      "otherEntityRelationshipName": "frete",
+      "relationshipName": "cidade",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "cliente",
+      "otherEntityRelationshipName": "frete",
+      "relationshipName": "cliente",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "motorista",
+      "otherEntityRelationshipName": "frete",
+      "relationshipName": "motorista",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "placa",
+      "otherEntityName": "caminhao",
+      "otherEntityRelationshipName": "frete",
+      "relationshipName": "caminhao",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

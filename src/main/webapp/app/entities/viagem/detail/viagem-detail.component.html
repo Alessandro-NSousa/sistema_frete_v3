@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="viagem">
+      <h2 data-cy="viagemDetailsHeading"><span jhiTranslate="sistemaFretesApp.viagem.detail.title">Viagem</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ viagem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.viagem.valorDespesa">Valor Despesa</span></dt>
+        <dd>
+          <span>{{ viagem.valorDespesa }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.viagem.frete">Frete</span></dt>
+        <dd>
+          <div *ngIf="viagem.frete">
+            <a [routerLink]="['/frete', viagem.frete?.id, 'view']">{{ viagem.frete?.data }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.viagem.dispesa">Dispesa</span></dt>
+        <dd>
+          <div *ngIf="viagem.dispesa">
+            <a [routerLink]="['/despesa', viagem.dispesa?.id, 'view']">{{ viagem.dispesa?.descricao }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/viagem', viagem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

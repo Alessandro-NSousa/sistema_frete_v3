@@ -1,0 +1,27 @@
+{
+  "sistemaFretesApp": {
+    "caminhao": {
+      "home": {
+        "title": "Caminhaos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Caminhao",
+        "createOrEditLabel": "Criar ou editar Caminhao",
+        "notFound": "Nenhum Caminhao encontrado"
+      },
+      "created": "Um novo Caminhao foi criado com o identificador {{ param }}",
+      "updated": "Um Caminhao foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Caminhao foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Caminhao {{ id }}?"
+      },
+      "detail": {
+        "title": "Caminhao"
+      },
+      "id": "ID",
+      "placa": "Placa",
+      "ano": "Ano",
+      "marca": "Marca",
+      "carga": "Carga"
+    }
+  }
+}

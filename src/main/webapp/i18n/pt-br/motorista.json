@@ -1,0 +1,29 @@
+{
+  "sistemaFretesApp": {
+    "motorista": {
+      "home": {
+        "title": "Motoristas",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Motorista",
+        "createOrEditLabel": "Criar ou editar Motorista",
+        "notFound": "Nenhum Motorista encontrado"
+      },
+      "created": "Um novo Motorista foi criado com o identificador {{ param }}",
+      "updated": "Um Motorista foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Motorista foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Motorista {{ id }}?"
+      },
+      "detail": {
+        "title": "Motorista"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "telefone": "Telefone",
+      "telefoneAdicional": "Telefone Adicional",
+      "cnh": "Cnh",
+      "sexo": "Sexo",
+      "endereco": "Endereco"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="MotoristaHeading">
+    <span jhiTranslate="sistemaFretesApp.motorista.home.title">Motoristas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.motorista.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-motorista"
+        [routerLink]="['/motorista/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.motorista.home.createLabel"> Create a new Motorista </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="motoristas?.length === 0">
+    <span jhiTranslate="sistemaFretesApp.motorista.home.notFound">No motoristas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="motoristas && motoristas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.motorista.nome">Nome</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.motorista.telefone">Telefone</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.motorista.telefoneAdicional">Telefone Adicional</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.motorista.cnh">Cnh</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.motorista.sexo">Sexo</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.motorista.endereco">Endereco</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let motorista of motoristas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/motorista', motorista.id, 'view']">{{ motorista.id }}</a>
+          </td>
+          <td>{{ motorista.nome }}</td>
+          <td>{{ motorista.telefone }}</td>
+          <td>{{ motorista.telefoneAdicional }}</td>
+          <td>{{ motorista.cnh }}</td>
+          <td jhiTranslate="{{ 'sistemaFretesApp.Sexo.' + motorista.sexo }}">{{ motorista.sexo }}</td>
+          <td>
+            <div *ngIf="motorista.endereco">
+              <a [routerLink]="['/endereco', motorista.endereco?.id, 'view']">{{ motorista.endereco?.logradouro }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/motorista', motorista.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/motorista', motorista.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(motorista)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

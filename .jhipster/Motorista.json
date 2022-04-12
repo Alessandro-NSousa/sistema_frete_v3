@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20220412043352",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "motorista",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefoneAdicional",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cnh",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sexo",
+      "fieldType": "Sexo",
+      "fieldValues": "M,F"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Motorista",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "logradouro",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "motorista",
+      "ownerSide": true,
+      "relationshipName": "endereco",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,31 @@
+{
+  "sistemaFretesApp": {
+    "frete": {
+      "home": {
+        "title": "Fretes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Frete",
+        "createOrEditLabel": "Create or edit a Frete",
+        "notFound": "No Fretes found"
+      },
+      "created": "A new Frete is created with identifier {{ param }}",
+      "updated": "A Frete is updated with identifier {{ param }}",
+      "deleted": "A Frete is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Frete {{ id }}?"
+      },
+      "detail": {
+        "title": "Frete"
+      },
+      "id": "ID",
+      "data": "Data",
+      "dias": "Dias",
+      "valor": "Valor",
+      "parcelamento": "Parcelamento",
+      "cidade": "Cidade",
+      "cliente": "Cliente",
+      "motorista": "Motorista",
+      "caminhao": "Caminhao"
+    }
+  }
+}

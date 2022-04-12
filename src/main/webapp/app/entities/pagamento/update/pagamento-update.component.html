@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-pagamento-heading"
+        data-cy="PagamentoCreateUpdateHeading"
+        jhiTranslate="sistemaFretesApp.pagamento.home.createOrEditLabel"
+      >
+        Create or edit a Pagamento
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.pagamento.valor" for="field_valor">Valor</label>
+          <input type="number" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.pagamento.parcela" for="field_parcela">Parcela</label>
+          <input type="number" class="form-control" name="parcela" id="field_parcela" data-cy="parcela" formControlName="parcela" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.pagamento.formaPagamento" for="field_formaPagamento"
+            >Forma Pagamento</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="formaPagamento"
+            id="field_formaPagamento"
+            data-cy="formaPagamento"
+            formControlName="formaPagamento"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.pagamento.frete" for="field_frete">Frete</label>
+          <select class="form-control" id="field_frete" data-cy="frete" name="frete" formControlName="frete">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="freteOption.id === editForm.get('frete')!.value?.id ? editForm.get('frete')!.value : freteOption"
+              *ngFor="let freteOption of fretesSharedCollection; trackBy: trackFreteById"
+            >
+              {{ freteOption.data }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

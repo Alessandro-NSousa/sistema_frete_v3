@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cliente">
+      <h2 data-cy="clienteDetailsHeading"><span jhiTranslate="sistemaFretesApp.cliente.detail.title">Cliente</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cliente.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.cliente.nome">Nome</span></dt>
+        <dd>
+          <span>{{ cliente.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.cliente.telefone">Telefone</span></dt>
+        <dd>
+          <span>{{ cliente.telefone }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.cliente.telefoneAdicional">Telefone Adicional</span></dt>
+        <dd>
+          <span>{{ cliente.telefoneAdicional }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.cliente.cnpj">Cnpj</span></dt>
+        <dd>
+          <span>{{ cliente.cnpj }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.cliente.endereco">Endereco</span></dt>
+        <dd>
+          <div *ngIf="cliente.endereco">
+            <a [routerLink]="['/endereco', cliente.endereco?.id, 'view']">{{ cliente.endereco?.logradouro }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.cliente.cidade">Cidade</span></dt>
+        <dd>
+          <div *ngIf="cliente.cidade">
+            <a [routerLink]="['/cidade', cliente.cidade?.id, 'view']">{{ cliente.cidade?.nome }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cliente', cliente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

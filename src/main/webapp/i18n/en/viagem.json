@@ -1,0 +1,26 @@
+{
+  "sistemaFretesApp": {
+    "viagem": {
+      "home": {
+        "title": "Viagems",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Viagem",
+        "createOrEditLabel": "Create or edit a Viagem",
+        "notFound": "No Viagems found"
+      },
+      "created": "A new Viagem is created with identifier {{ param }}",
+      "updated": "A Viagem is updated with identifier {{ param }}",
+      "deleted": "A Viagem is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Viagem {{ id }}?"
+      },
+      "detail": {
+        "title": "Viagem"
+      },
+      "id": "ID",
+      "valorDespesa": "Valor Despesa",
+      "frete": "Frete",
+      "dispesa": "Dispesa"
+    }
+  }
+}

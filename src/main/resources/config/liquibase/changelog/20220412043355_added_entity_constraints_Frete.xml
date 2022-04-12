@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Frete.
+    -->
+    <changeSet id="20220412043355-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="cidade_id"
+                                 baseTableName="frete"
+                                 constraintName="fk_frete__cidade_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cidade"/>
+
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="frete"
+                                 constraintName="fk_frete__cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cliente"/>
+
+        <addForeignKeyConstraint baseColumnNames="motorista_id"
+                                 baseTableName="frete"
+                                 constraintName="fk_frete__motorista_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="motorista"/>
+
+        <addForeignKeyConstraint baseColumnNames="caminhao_id"
+                                 baseTableName="frete"
+                                 constraintName="fk_frete__caminhao_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="caminhao"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20220412043353",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "cliente",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefoneAdicional",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cnpj",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Cliente",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "logradouro",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "cliente",
+      "ownerSide": true,
+      "relationshipName": "endereco",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "cidade",
+      "otherEntityRelationshipName": "clientes",
+      "relationshipName": "cidade",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

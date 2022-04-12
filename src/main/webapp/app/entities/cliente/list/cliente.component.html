@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="ClienteHeading">
+    <span jhiTranslate="sistemaFretesApp.cliente.home.title">Clientes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.cliente.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cliente"
+        [routerLink]="['/cliente/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.cliente.home.createLabel"> Create a new Cliente </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="clientes?.length === 0">
+    <span jhiTranslate="sistemaFretesApp.cliente.home.notFound">No clientes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="clientes && clientes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.cliente.nome">Nome</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.cliente.telefone">Telefone</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.cliente.telefoneAdicional">Telefone Adicional</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.cliente.cnpj">Cnpj</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.cliente.endereco">Endereco</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.cliente.cidade">Cidade</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/cliente', cliente.id, 'view']">{{ cliente.id }}</a>
+          </td>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.telefone }}</td>
+          <td>{{ cliente.telefoneAdicional }}</td>
+          <td>{{ cliente.cnpj }}</td>
+          <td>
+            <div *ngIf="cliente.endereco">
+              <a [routerLink]="['/endereco', cliente.endereco?.id, 'view']">{{ cliente.endereco?.logradouro }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="cliente.cidade">
+              <a [routerLink]="['/cidade', cliente.cidade?.id, 'view']">{{ cliente.cidade?.nome }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/cliente', cliente.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/cliente', cliente.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(cliente)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

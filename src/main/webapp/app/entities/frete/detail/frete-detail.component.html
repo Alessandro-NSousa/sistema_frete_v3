@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="frete">
+      <h2 data-cy="freteDetailsHeading"><span jhiTranslate="sistemaFretesApp.frete.detail.title">Frete</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ frete.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.data">Data</span></dt>
+        <dd>
+          <span>{{ frete.data | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.dias">Dias</span></dt>
+        <dd>
+          <span>{{ frete.dias }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.valor">Valor</span></dt>
+        <dd>
+          <span>{{ frete.valor }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.parcelamento">Parcelamento</span></dt>
+        <dd>
+          <span>{{ frete.parcelamento }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.cidade">Cidade</span></dt>
+        <dd>
+          <div *ngIf="frete.cidade">
+            <a [routerLink]="['/cidade', frete.cidade?.id, 'view']">{{ frete.cidade?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.cliente">Cliente</span></dt>
+        <dd>
+          <div *ngIf="frete.cliente">
+            <a [routerLink]="['/cliente', frete.cliente?.id, 'view']">{{ frete.cliente?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.motorista">Motorista</span></dt>
+        <dd>
+          <div *ngIf="frete.motorista">
+            <a [routerLink]="['/motorista', frete.motorista?.id, 'view']">{{ frete.motorista?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.frete.caminhao">Caminhao</span></dt>
+        <dd>
+          <div *ngIf="frete.caminhao">
+            <a [routerLink]="['/caminhao', frete.caminhao?.id, 'view']">{{ frete.caminhao?.placa }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/frete', frete.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

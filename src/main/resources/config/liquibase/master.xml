@@ -15,7 +15,21 @@
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043348_added_entity_Cidade.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043349_added_entity_Caminhao.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043350_added_entity_Despesa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043351_added_entity_Viagem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043352_added_entity_Motorista.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043353_added_entity_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043354_added_entity_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043355_added_entity_Frete.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043356_added_entity_Pagamento.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20220412043351_added_entity_constraints_Viagem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043352_added_entity_constraints_Motorista.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043353_added_entity_constraints_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043355_added_entity_constraints_Frete.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220412043356_added_entity_constraints_Pagamento.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

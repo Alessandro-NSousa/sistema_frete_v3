@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20220412043348",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "cidade",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "uf",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Cidade",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "cliente",
+      "otherEntityRelationshipName": "cidade",
+      "relationshipName": "clientes",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

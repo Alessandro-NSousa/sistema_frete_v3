@@ -1,0 +1,24 @@
+{
+  "sistemaFretesApp": {
+    "despesa": {
+      "home": {
+        "title": "Despesas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Despesa",
+        "createOrEditLabel": "Create or edit a Despesa",
+        "notFound": "No Despesas found"
+      },
+      "created": "A new Despesa is created with identifier {{ param }}",
+      "updated": "A Despesa is updated with identifier {{ param }}",
+      "deleted": "A Despesa is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Despesa {{ id }}?"
+      },
+      "detail": {
+        "title": "Despesa"
+      },
+      "id": "ID",
+      "descricao": "Descricao"
+    }
+  }
+}

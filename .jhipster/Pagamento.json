@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220412043356",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "pagamento",
+  "fields": [
+    {
+      "fieldName": "valor",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "parcela",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "formaPagamento",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Pagamento",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "data",
+      "otherEntityName": "frete",
+      "otherEntityRelationshipName": "pagamento",
+      "relationshipName": "frete",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

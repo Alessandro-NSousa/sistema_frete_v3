@@ -1,0 +1,125 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-frete-heading" data-cy="FreteCreateUpdateHeading" jhiTranslate="sistemaFretesApp.frete.home.createOrEditLabel">
+        Create or edit a Frete
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.data" for="field_data">Data</label>
+          <div class="input-group">
+            <input
+              id="field_data"
+              data-cy="data"
+              type="text"
+              class="form-control"
+              name="data"
+              ngbDatepicker
+              #dataDp="ngbDatepicker"
+              formControlName="data"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.dias" for="field_dias">Dias</label>
+          <input type="number" class="form-control" name="dias" id="field_dias" data-cy="dias" formControlName="dias" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.valor" for="field_valor">Valor</label>
+          <input type="number" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.parcelamento" for="field_parcelamento">Parcelamento</label>
+          <input
+            type="number"
+            class="form-control"
+            name="parcelamento"
+            id="field_parcelamento"
+            data-cy="parcelamento"
+            formControlName="parcelamento"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.cidade" for="field_cidade">Cidade</label>
+          <select class="form-control" id="field_cidade" data-cy="cidade" name="cidade" formControlName="cidade">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="cidadeOption.id === editForm.get('cidade')!.value?.id ? editForm.get('cidade')!.value : cidadeOption"
+              *ngFor="let cidadeOption of cidadesSharedCollection; trackBy: trackCidadeById"
+            >
+              {{ cidadeOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.cliente" for="field_cliente">Cliente</label>
+          <select class="form-control" id="field_cliente" data-cy="cliente" name="cliente" formControlName="cliente">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="clienteOption.id === editForm.get('cliente')!.value?.id ? editForm.get('cliente')!.value : clienteOption"
+              *ngFor="let clienteOption of clientesSharedCollection; trackBy: trackClienteById"
+            >
+              {{ clienteOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.motorista" for="field_motorista">Motorista</label>
+          <select class="form-control" id="field_motorista" data-cy="motorista" name="motorista" formControlName="motorista">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="motoristaOption.id === editForm.get('motorista')!.value?.id ? editForm.get('motorista')!.value : motoristaOption"
+              *ngFor="let motoristaOption of motoristasSharedCollection; trackBy: trackMotoristaById"
+            >
+              {{ motoristaOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.frete.caminhao" for="field_caminhao">Caminhao</label>
+          <select class="form-control" id="field_caminhao" data-cy="caminhao" name="caminhao" formControlName="caminhao">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="caminhaoOption.id === editForm.get('caminhao')!.value?.id ? editForm.get('caminhao')!.value : caminhaoOption"
+              *ngFor="let caminhaoOption of caminhaosSharedCollection; trackBy: trackCaminhaoById"
+            >
+              {{ caminhaoOption.placa }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

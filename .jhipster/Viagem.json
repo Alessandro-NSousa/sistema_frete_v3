@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220412043351",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "viagem",
+  "fields": [
+    {
+      "fieldName": "valorDespesa",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Viagem",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "data",
+      "otherEntityName": "frete",
+      "otherEntityRelationshipName": "viagem",
+      "relationshipName": "frete",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "despesa",
+      "otherEntityRelationshipName": "viagem",
+      "relationshipName": "dispesa",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
