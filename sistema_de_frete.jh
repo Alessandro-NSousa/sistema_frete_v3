@@ -1,0 +1,81 @@
+
+entity Cidade {
+	nome String required
+    uf String
+}
+
+entity Caminhao {
+	placa String
+	ano String
+    marca String
+    carga Double
+}
+
+entity Despesa {
+	descricao String required
+}
+
+entity Viagem {
+	valorDespesa Double required
+}
+
+entity Motorista {
+	nome String required
+	telefone String
+	telefoneAdicional String
+    cnh String
+    sexo Sexo
+}
+
+enum Sexo {M,F}
+
+entity Cliente {
+	nome String required
+	telefone String
+	telefoneAdicional String
+    cnpj String
+}
+
+entity Endereco {
+	cep String
+	logradouro String
+	complemento String
+    numero String
+    bairro String
+}
+
+entity Frete {
+    data LocalDate
+	dias Integer
+	valor Double
+    parcelamento Integer
+}
+
+entity Pagamento {
+	valor Double
+	parcela Integer
+	formaPagamento String
+}
+
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Cidade{clientes(nome)} to Cliente{cidade(nome)}
+}
+
+relationship ManyToOne {
+	Frete{cidade(nome)} to Cidade
+    Frete{cliente(nome)} to Cliente
+    Frete{motorista(nome)} to Motorista
+    Frete{caminhao(placa)} to Caminhao
+    
+    Pagamento{frete(data)} to Frete
+    Viagem{frete(data)} to Frete
+    Viagem{dispesa(descricao)} to Despesa  
+}
+
+relationship OneToOne {
+	Cliente{endereco(logradouro)} to Endereco
+    Motorista{endereco(logradouro)} to Endereco
+}
