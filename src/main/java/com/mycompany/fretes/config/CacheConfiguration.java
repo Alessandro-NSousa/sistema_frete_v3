@@ -48,6 +48,16 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.fretes.domain.User.class.getName());
             createCache(cm, com.mycompany.fretes.domain.Authority.class.getName());
             createCache(cm, com.mycompany.fretes.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mycompany.fretes.domain.Cidade.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Cidade.class.getName() + ".clientes");
+            createCache(cm, com.mycompany.fretes.domain.Caminhao.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Despesa.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Viagem.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Motorista.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Cliente.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Endereco.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Frete.class.getName());
+            createCache(cm, com.mycompany.fretes.domain.Pagamento.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

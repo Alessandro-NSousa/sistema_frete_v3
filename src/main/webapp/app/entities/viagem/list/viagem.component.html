@@ -1,0 +1,80 @@
+<div>
+  <h2 id="page-heading" data-cy="ViagemHeading">
+    <span jhiTranslate="sistemaFretesApp.viagem.home.title">Viagems</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.viagem.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-viagem"
+        [routerLink]="['/viagem/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.viagem.home.createLabel"> Create a new Viagem </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="viagems?.length === 0">
+    <span jhiTranslate="sistemaFretesApp.viagem.home.notFound">No viagems found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="viagems && viagems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.viagem.valorDespesa">Valor Despesa</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.viagem.frete">Frete</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.viagem.dispesa">Dispesa</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viagem of viagems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/viagem', viagem.id, 'view']">{{ viagem.id }}</a>
+          </td>
+          <td>{{ viagem.valorDespesa }}</td>
+          <td>
+            <div *ngIf="viagem.frete">
+              <a [routerLink]="['/frete', viagem.frete?.id, 'view']">{{ viagem.frete?.data }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="viagem.dispesa">
+              <a [routerLink]="['/despesa', viagem.dispesa?.id, 'view']">{{ viagem.dispesa?.descricao }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/viagem', viagem.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/viagem', viagem.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(viagem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

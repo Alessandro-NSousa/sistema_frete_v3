@@ -1,0 +1,29 @@
+{
+  "sistemaFretesApp": {
+    "motorista": {
+      "home": {
+        "title": "Motoristas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Motorista",
+        "createOrEditLabel": "Create or edit a Motorista",
+        "notFound": "No Motoristas found"
+      },
+      "created": "A new Motorista is created with identifier {{ param }}",
+      "updated": "A Motorista is updated with identifier {{ param }}",
+      "deleted": "A Motorista is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Motorista {{ id }}?"
+      },
+      "detail": {
+        "title": "Motorista"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "telefone": "Telefone",
+      "telefoneAdicional": "Telefone Adicional",
+      "cnh": "Cnh",
+      "sexo": "Sexo",
+      "endereco": "Endereco"
+    }
+  }
+}

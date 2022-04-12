@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-viagem-heading" data-cy="ViagemCreateUpdateHeading" jhiTranslate="sistemaFretesApp.viagem.home.createOrEditLabel">
+        Create or edit a Viagem
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.viagem.valorDespesa" for="field_valorDespesa">Valor Despesa</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorDespesa"
+            id="field_valorDespesa"
+            data-cy="valorDespesa"
+            formControlName="valorDespesa"
+          />
+          <div
+            *ngIf="editForm.get('valorDespesa')!.invalid && (editForm.get('valorDespesa')!.dirty || editForm.get('valorDespesa')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('valorDespesa')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('valorDespesa')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.viagem.frete" for="field_frete">Frete</label>
+          <select class="form-control" id="field_frete" data-cy="frete" name="frete" formControlName="frete">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="freteOption.id === editForm.get('frete')!.value?.id ? editForm.get('frete')!.value : freteOption"
+              *ngFor="let freteOption of fretesSharedCollection; trackBy: trackFreteById"
+            >
+              {{ freteOption.data }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="sistemaFretesApp.viagem.dispesa" for="field_dispesa">Dispesa</label>
+          <select class="form-control" id="field_dispesa" data-cy="dispesa" name="dispesa" formControlName="dispesa">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="despesaOption.id === editForm.get('dispesa')!.value?.id ? editForm.get('dispesa')!.value : despesaOption"
+              *ngFor="let despesaOption of despesasSharedCollection; trackBy: trackDespesaById"
+            >
+              {{ despesaOption.descricao }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

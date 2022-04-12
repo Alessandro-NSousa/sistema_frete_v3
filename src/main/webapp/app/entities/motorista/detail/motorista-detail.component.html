@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="motorista">
+      <h2 data-cy="motoristaDetailsHeading"><span jhiTranslate="sistemaFretesApp.motorista.detail.title">Motorista</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ motorista.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.motorista.nome">Nome</span></dt>
+        <dd>
+          <span>{{ motorista.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.motorista.telefone">Telefone</span></dt>
+        <dd>
+          <span>{{ motorista.telefone }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.motorista.telefoneAdicional">Telefone Adicional</span></dt>
+        <dd>
+          <span>{{ motorista.telefoneAdicional }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.motorista.cnh">Cnh</span></dt>
+        <dd>
+          <span>{{ motorista.cnh }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.motorista.sexo">Sexo</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'sistemaFretesApp.Sexo.' + motorista.sexo }}">{{ motorista.sexo }}</span>
+        </dd>
+        <dt><span jhiTranslate="sistemaFretesApp.motorista.endereco">Endereco</span></dt>
+        <dd>
+          <div *ngIf="motorista.endereco">
+            <a [routerLink]="['/endereco', motorista.endereco?.id, 'view']">{{ motorista.endereco?.logradouro }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/motorista', motorista.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

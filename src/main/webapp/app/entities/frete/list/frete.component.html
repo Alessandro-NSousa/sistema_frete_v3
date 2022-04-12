@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="FreteHeading">
+    <span jhiTranslate="sistemaFretesApp.frete.home.title">Fretes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.frete.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-frete"
+        [routerLink]="['/frete/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="sistemaFretesApp.frete.home.createLabel"> Create a new Frete </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fretes?.length === 0">
+    <span jhiTranslate="sistemaFretesApp.frete.home.notFound">No fretes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="fretes && fretes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.data">Data</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.dias">Dias</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.valor">Valor</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.parcelamento">Parcelamento</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.cidade">Cidade</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.cliente">Cliente</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.motorista">Motorista</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.frete.caminhao">Caminhao</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let frete of fretes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/frete', frete.id, 'view']">{{ frete.id }}</a>
+          </td>
+          <td>{{ frete.data | formatMediumDate }}</td>
+          <td>{{ frete.dias }}</td>
+          <td>{{ frete.valor }}</td>
+          <td>{{ frete.parcelamento }}</td>
+          <td>
+            <div *ngIf="frete.cidade">
+              <a [routerLink]="['/cidade', frete.cidade?.id, 'view']">{{ frete.cidade?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="frete.cliente">
+              <a [routerLink]="['/cliente', frete.cliente?.id, 'view']">{{ frete.cliente?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="frete.motorista">
+              <a [routerLink]="['/motorista', frete.motorista?.id, 'view']">{{ frete.motorista?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="frete.caminhao">
+              <a [routerLink]="['/caminhao', frete.caminhao?.id, 'view']">{{ frete.caminhao?.placa }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/frete', frete.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/frete', frete.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(frete)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
