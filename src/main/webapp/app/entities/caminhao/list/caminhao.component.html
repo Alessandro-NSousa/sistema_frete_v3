@@ -1,6 +1,6 @@
 <div>
   <h2 id="page-heading" data-cy="CaminhaoHeading">
-    <span jhiTranslate="sistemaFretesApp.caminhao.home.title">Caminhaos</span>
+    <span>Caminhões</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
@@ -15,7 +15,7 @@
         [routerLink]="['/caminhao/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="sistemaFretesApp.caminhao.home.createLabel"> Create a new Caminhao </span>
+        <span> Criar Novo Caminhão </span>
       </button>
     </div>
   </h2>
@@ -25,7 +25,7 @@
   <jhi-alert></jhi-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="caminhaos?.length === 0">
-    <span jhiTranslate="sistemaFretesApp.caminhao.home.notFound">No caminhaos found</span>
+    <span jhiTranslate="sistemaFretesApp.caminhao.home.notFound">No caminhões found</span>
   </div>
 
   <div class="table-responsive" id="entities" *ngIf="caminhaos && caminhaos.length > 0">
