@@ -34,6 +34,7 @@
         <tr>
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
           <th scope="col"><span jhiTranslate="sistemaFretesApp.cidade.nome">Nome</span></th>
+          <th scope="col"><span jhiTranslate="sistemaFretesApp.cidade.nome">Sobre Nome</span></th>
           <th scope="col"><span jhiTranslate="sistemaFretesApp.cidade.uf">Uf</span></th>
           <th scope="col"></th>
         </tr>
@@ -44,7 +45,7 @@
             <a [routerLink]="['/cidade', cidade.id, 'view']">{{ cidade.id }}</a>
           </td>
           <td>{{ cidade.nome }}</td>
-          <td>{{ cidade.uf }}</td>
+          <td>--{{ cidade.uf }}--</td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/cidade', cidade.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
