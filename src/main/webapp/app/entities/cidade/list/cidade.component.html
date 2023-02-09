@@ -44,7 +44,7 @@
             <a [routerLink]="['/cidade', cidade.id, 'view']">{{ cidade.id }}</a>
           </td>
           <td>{{ cidade.nome }}</td>
-          <td>{{ cidade.uf }}</td>
+          <td>--{{ cidade.uf }}--</td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/cidade', cidade.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
